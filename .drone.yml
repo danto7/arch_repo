@@ -5,8 +5,8 @@ steps:
 - name: build
   image: plugins/docker
   settings:
-    repo: registry/danto7/arch-repo-build
-    registry: registry
+    repo: registry.d-jensen.de/danto7/arch-repo-build
+    registry: registry.d-jensen.de
     username:
       from_secret: docker-user
     password:
@@ -17,7 +17,7 @@ name: build packages and deploy
 
 steps:
 - name: build yay
-  image: registry/danto7/arch-repo-build
+  image: registry.d-jensen.de/danto7/arch-repo-build
   commands:
   - git clone https://aur.archlinux.org/yay.git
   - export PKGBUILD=$PWD
