@@ -21,7 +21,7 @@ steps:
   - git clone https://aur.archlinux.org/yay.git
   - export PKGBUILD=$PWD
   - /build.sh $PWD/yay
-  - ls -la
+  - ls -lah
 
 depends_on:
 - builder image
