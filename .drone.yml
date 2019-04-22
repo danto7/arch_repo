@@ -5,15 +5,18 @@ steps:
 - name: build
   image: plugins/docker
   settings:
-    repo: local/arch-repo-build
-
+    repo: registry.d-jensen.de/danto7/arch-repo-build
+    username:
+      from_secret: docker-user
+    password:
+      from_secret: docker-password
 ---
 kind: pipeline
 name: build packages and deploy
 
 steps:
 - name: build yay
-  image: local/arch-repo-build
+  image: registry.d-jensen.de/danto7/arch-repo-build
   commands:
   - git clone https://aur.archlinux.org/yay.git
   - export PKGBUILD=$PWD
