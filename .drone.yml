@@ -12,11 +12,13 @@ kind: pipeline
 name: build packages and deploy
 
 steps:
-- name: build
+- name: build yay
   image: local/arch-repo-build
   commands:
-  - git clone https://aur.archlinux.org/yay.git /home/builder
-  - /build.sh /home/builder
+  - git clone https://aur.archlinux.org/yay.git
+  - export PKGBUILD=$PWD
+  - /build.sh $PWD/yay
+  - ls -la
 
 depends_on:
 - builder image
