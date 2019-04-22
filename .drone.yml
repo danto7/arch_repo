@@ -5,7 +5,7 @@ steps:
 - name: build
   image: plugins/docker
   settings:
-    repo: registry.d-jensen.de/danto7/arch-repo-build
+    repo: registry/danto7/arch-repo-build
     registry: registry
     username:
       from_secret: docker-user
