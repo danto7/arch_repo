@@ -1,0 +1,22 @@
+kind: pipeline
+name: builder image
+
+steps:
+- name: build
+  image: plugins/docker
+  settings:
+    repo: local/arch-repo-build
+
+---
+kind: pipeline
+name: build packages and deploy
+
+steps:
+- name: build
+  image: local/arch-repo-build
+  commands:
+  - git clone https://aur.archlinux.org/yay.git /home/builder
+  - /build.sh /home/builder
+
+depends_on:
+- builder image
